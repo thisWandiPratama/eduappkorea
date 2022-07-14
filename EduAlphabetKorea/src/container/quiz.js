@@ -1016,19 +1016,19 @@ export default class Menu extends Component {
   }
 
   simpanQuiz = async () => {
-    if (this.state.quiz.length == 0 || this.state.a.length == 0 || this.state.b.length == 0|| this.state.c.length == 0|| this.state.d.length == 0|| this.state.currect.length == 0) {
+    if (this.state.quiz.length == 0 || this.state.a.length == 0 || this.state.b.length == 0 || this.state.c.length == 0 || this.state.d.length == 0 || this.state.currect.length == 0) {
       Alert.alert("Alert Quiz", "Semua Wajib Diisi")
     } else {
       this.setState({
         isloading: !this.state.isloading
       })
       const datasend = {
-        "quiz":this.state.quiz,
-        "a":this.state.a,
-        "b":this.state.b,
-        "c":this.state.c,
-        "d":this.state.d,
-        "currect":this.state.currect
+        "quiz": this.state.quiz,
+        "a": this.state.a,
+        "b": this.state.b,
+        "c": this.state.c,
+        "d": this.state.d,
+        "currect": this.state.currect
       }
 
       const sendQuiz = await postService(datasend, "save_quiz")
@@ -1120,7 +1120,7 @@ export default class Menu extends Component {
             alignItems: "center",
             justifyContent: "center"
           }}>
-            <View style={{ height: "60%", width: "80%", backgroundColor: "white", borderRadius: 20, padding: 20, alignItems: "center" }}>
+            <View style={{ height: 480, width: "80%", backgroundColor: "white", borderRadius: 20, padding: 20, alignItems: "center" }}>
               <TouchableOpacity
                 onPress={() => {
                   this.setState({
@@ -1157,47 +1157,51 @@ export default class Menu extends Component {
                 }} >X</Text>
               </TouchableOpacity>
               {this.state.answer_currect.length < 6 ?
-                <View>
+                <View style={{ alignItems: 'center' }}>
                   <Image
                     source={require("../assets/progress.png")}
                     style={{
-                      height: 300,
-                      width: 300,
+                      height: 200,
+                      width: 200,
                       resizeMode: "contain"
                     }}
                   />
-                  <Text style={{
-                    textAlign: "center",
-                    fontSize: 20,
-                    fontWeight: "bold",
-                    color: "red"
-                  }}>Terus Semangat, Semuanya Perlu Perjuangan</Text>
-                  <Text style={{
-                    textAlign: "center",
-                    fontSize: 20,
-                    fontWeight: "bold",
-                    color: "red",
-                    marginTop: 50
-                  }}>Nilai Quiz Kamu</Text>
+                  <View style={{height:200}}>
+                    <Text style={{
+                      textAlign: "center",
+                      fontSize: 20,
+                      fontWeight: "bold",
+                      color: "red"
+                    }}>Terus Semangat, Semuanya Perlu Perjuangan</Text>
+                    <Text style={{
+                      textAlign: "center",
+                      fontSize: 20,
+                      fontWeight: "bold",
+                      color: "red",
+                      marginTop: 30
+                    }}>Nilai Quiz Kamu</Text>
 
-                  <Text style={{
-                    textAlign: "center",
-                    fontSize: 50,
-                    fontWeight: "bold",
-                    color: "red",
-                    marginTop: 20
-                  }}>{this.state.answer_currect.length * 10}</Text>
+                    <Text style={{
+                      textAlign: "center",
+                      fontSize: 50,
+                      fontWeight: "bold",
+                      color: "red",
+                      marginTop: 20
+                    }}>{this.state.answer_currect.length * 10}
+                    </Text>
+                  </View>
                 </View>
                 :
-                <View>
+                <View style={{alignItems:"center"}}>
                   <Image
                     source={require("../assets/currect.png")}
                     style={{
-                      height: 300,
-                      width: 300,
+                      height: 200,
+                      width: 200,
                       resizeMode: "contain"
                     }}
                   />
+                  <View style={{height:200}}>
                   <Text style={{
                     textAlign: "center",
                     fontSize: 25,
@@ -1212,6 +1216,7 @@ export default class Menu extends Component {
                     color: "#07AC1E",
                     marginTop: 20
                   }}>{this.state.answer_currect.length * 10}</Text>
+                </View>
                 </View>
               }
             </View>
